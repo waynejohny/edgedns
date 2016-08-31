@@ -52,7 +52,7 @@ dependencies = [
 [[package]]
 name = "cart-cache"
 version = "0.1.0"
-source = "git+https://github.com/jedisct1/rust-cart#8257e6d4d729e15c9c1f8596699365cf94cba4d9"
+source = "git+https://github.com/jedisct1/rust-cart#04c6e1cde19be2ced7292d214431b0e7ec301ceb"
 dependencies = [
  "slab 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -171,7 +171,7 @@ dependencies = [
 [[package]]
 name = "mio"
 version = "0.6.0-dev"
-source = "git+https://github.com/carllerche/mio#fe22b9fa667eb199a44dcda1c5352f48431187d8"
+source = "git+https://github.com/carllerche/mio#62b90817b7d501857b3d3826579141ac1c3672f9"
 dependencies = [
  "kernel32-sys 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "lazycell 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
