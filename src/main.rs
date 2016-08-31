@@ -3,7 +3,7 @@
 
 #[macro_use]
 extern crate log;
-extern crate arc_cache;
+extern crate cart_cache;
 extern crate bytes;
 extern crate clap;
 extern crate env_logger;

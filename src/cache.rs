@@ -1,5 +1,5 @@
 
-use arc_cache::*;
+use cart_cache::*;
 use dns;
 use dns::{NormalizedQuestion, NormalizedQuestionKey, DNS_CLASS_IN, DNS_RCODE_NXDOMAIN};
 use std::sync::{Arc, Mutex};
@@ -21,13 +21,13 @@ impl CacheEntry {
 
 #[derive(Clone)]
 pub struct Cache {
-    arc_mx: Arc<Mutex<ArcCache<NormalizedQuestionKey, CacheEntry>>>,
+    arc_mx: Arc<Mutex<CartCache<NormalizedQuestionKey, CacheEntry>>>,
     decrement_ttl: bool,
 }
 
 impl Cache {
     pub fn new(capacity: usize, decrement_ttl: bool) -> Cache {
-        let arc = ArcCache::new(capacity);
+        let arc = CartCache::new(capacity).unwrap();
         let arc_mx = Arc::new(Mutex::new(arc));
         Cache {
             arc_mx: arc_mx,
@@ -37,7 +37,7 @@ impl Cache {
 
     pub fn frequent_recent_len(&self) -> (usize, usize) {
         let cache = self.arc_mx.lock().unwrap();
-        (cache.frequent_len(), cache.recent_len())
+        (cache.len(), cache.len())
     }
 
     pub fn insert(&mut self,

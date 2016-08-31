@@ -2,8 +2,8 @@
 name = "edgedns"
 version = "0.1.0"
 dependencies = [
- "arc-cache 0.1.0 (git+https://github.com/jedisct1/rust-arc-cache.git)",
  "bytes 0.4.0-dev (git+https://github.com/carllerche/bytes)",
+ "cart-cache 0.1.0 (git+https://github.com/jedisct1/rust-cart)",
  "civet 0.8.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "clap 2.11.0 (git+https://github.com/kbknapp/clap-rs.git)",
  "conduit 0.7.4 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -32,14 +32,6 @@ version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "arc-cache"
-version = "0.1.0"
-source = "git+https://github.com/jedisct1/rust-arc-cache.git#6dfef4262a2bf99f622c2102f12894f0ec9a3b6e"
-dependencies = [
- "lru-cache 0.0.7 (git+https://github.com/jedisct1/lru-cache.git)",
-]
-
-[[package]]
 name = "bitflags"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -55,6 +47,14 @@ version = "0.4.0-dev"
 source = "git+https://github.com/carllerche/bytes#38abb8074b87f226c32213ebb1bee7752b43278c"
 dependencies = [
  "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "cart-cache"
+version = "0.1.0"
+source = "git+https://github.com/jedisct1/rust-cart#8257e6d4d729e15c9c1f8596699365cf94cba4d9"
+dependencies = [
+ "slab 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -156,22 +156,9 @@ version = "0.2.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "linked-hash-map"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
 name = "log"
 version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "lru-cache"
-version = "0.0.7"
-source = "git+https://github.com/jedisct1/lru-cache.git#b8fc8842f81f8cd0876054ae8ac71a665fa7ca3b"
-dependencies = [
- "linked-hash-map 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
 [[package]]
 name = "memchr"
