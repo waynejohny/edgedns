@@ -128,8 +128,8 @@ pub fn socket_udp_bound(addr: &str) -> io::Result<UdpSocket> {
     let actual: SocketAddr = FromStr::from_str(addr).expect("Invalid address");
     let nix_addr = SockAddr::Inet(InetAddr::from_std(&actual));
     let socket_fd = match actual {
-        try!(SocketAddr::V4(_) => socket_udp_v4()),
-        try!(SocketAddr::V6(_) => socket_udp_v6()),
+        SocketAddr::V4(_) => socket_udp_v4(),
+        SocketAddr::V6(_) => socket_udp_v6(),
     };
     let _ = setsockopt(socket_fd, sockopt::ReuseAddr, &true);
     let _ = setsockopt(socket_fd, sockopt::ReusePort, &true);
