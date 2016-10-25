@@ -117,10 +117,10 @@ fn socket_udp_v4() -> io::Result<RawFd> {
 }
 
 fn socket_udp_v6() -> io::Result<RawFd> {
-    try!(let socket_fd = socket(AddressFamily::Inet6,
+    let socket_fd = socket(AddressFamily::Inet6,
                            SockType::Datagram,
                            SockFlag::empty(),
-                           SockLevel::Udp as i32));
+                           SockLevel::Udp as i32);
     Ok(socket_fd)
 }
 
