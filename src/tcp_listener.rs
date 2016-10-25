@@ -181,7 +181,7 @@ impl TcpListenerHandler {
                 return Err(e);
             }
         };
-        let peer_addr = tcp_stream.peer_addr()?.ip();
+        let peer_addr = try!(tcp_stream.peer_addr()).ip();
         let mut hs = SipHasher13::new();
         peer_addr.hash(&mut hs);
         let h = hs.finish();
@@ -372,10 +372,10 @@ impl TcpListener {
         let actual = addr.parse().expect("Unable to parse the TCP address to bind");
         let mio_listener = tcp::TcpListener::bind(&actual).expect("Unable to bind the TCP socket");
         debug!("tcp listener socket={:?}", mio_listener);
-        event_loop.register(&mio_listener,
+        try!(event_loop.register(&mio_listener,
                       LISTENER_TOK,
                       Ready::readable() | Ready::hup(),
-                      PollOpt::edge() | PollOpt::oneshot())?;
+                      PollOpt::edge() | PollOpt::oneshot()));
         let tcpclient_tx: Sender<ResolverResponse> = event_loop.channel();
         let mut handler = TcpListenerHandler {
             cache: self.cache,
