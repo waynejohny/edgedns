@@ -109,10 +109,10 @@ fn socket_udp_set_buffer_size(socket_fd: RawFd) {
 }
 
 fn socket_udp_v4() -> io::Result<RawFd> {
-    try!(let socket_fd = socket(AddressFamily::Inet,
+    let socket_fd = socket(AddressFamily::Inet,
                            SockType::Datagram,
                            SockFlag::empty(),
-                           SockLevel::Udp as i32));
+                           SockLevel::Udp as i32);
     Ok(socket_fd)
 }
 
